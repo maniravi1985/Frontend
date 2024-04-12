@@ -1,0 +1,63 @@
+﻿@page "/Login"
+
+<style>
+    .add-button {
+        border: 2px solid black;
+        / Black border / background-color: white;
+        / White background / color: black !important;
+        / Black icon color / border-radius: 50%;
+        / Makes the button round / margin-left: 10px;
+        / Adjust margin as needed /
+    }
+
+</style>
+
+<MudContainer>
+    <MudGrid Justify="Justify.Center" AlignItems="AlignItems.Center" Class="mt-10">
+        <MudItem xs="12" md="6">
+            <MudPaper Elevation="3">
+                <MudCardContent>
+
+                    <div class="mb-4">
+                        <MudText Typo="Typo.body1">Author:</MudText>
+                        <MudTextField @bind-Value="@Author" Variant="Variant.Filled" Size="Size.Small"></MudTextField>
+                    </div>
+                    <div class="mb-4">
+                        <MudText Typo="Typo.body1">Tag:</MudText>
+                        <div style="display: flex;">
+                            <MudTextField @bind-Value="@Tag" Variant="Variant.Filled" Size="Size.Medium"></MudTextField>
+                            <MudButton Icon="Add" Color="Color.Primary" Variant="Variant.Filled" Class="add-button" Clicked="@(() => AddNewTag())"></MudButton>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <MudText Typo="Typo.body1">Quotes:</MudText>
+                        <div style="display: flex;">
+                            <MudTextField @bind-Value="@Quotes" Variant="Variant.Filled" Size="Size.Large"></MudTextField>
+                            <MudButton Icon="Add" Color="Color.Tertiary" Variant="Variant.Filled" Class="add-button" Clicked="@(() => AddNewSymbolQuote())"></MudButton>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <MudButton Color="Color.Primary" Variant="Variant.Filled">Login</MudButton>
+                    </div>
+                </MudCardContent>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private string Author { get; set; }
+    private string Tag { get; set; }
+    private string Quotes { get; set; }
+
+    private void AddNewTag()
+    {
+        // Add logic to add a new tag text field
+    }
+
+    private void AddNewSymbolQuote()
+    {
+        // Add logic to add a new symbol quotes text field
+    }
+}
+

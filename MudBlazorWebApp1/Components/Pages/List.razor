@@ -1,0 +1,64 @@
+﻿@page "/List"
+
+<MudContainer>
+    <MudGrid Justify="Justify.Center" AlignItems="AlignItems.Center" Class="mt-10">
+        <MudItem xs="12" md="6">
+            <MudPaper Elevation="6">
+                <MudCardContent>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <h2><strong>Quotes Table</strong></h2>
+                        <div style="position: relative;">
+                            <input type="text" placeholder="Search..." style="border: none; width: 150px; padding-left: 25px; border-radius: 10px;" @bind-value="searchText" @bind-value:event="oninput">
+                            <i class="fa fa-search" style="position: absolute; left: 5px; top: 50%; transform: translateY(-50%);"></i>
+                        </div>
+                    </div>
+                    <MudSimpleTable Style="overflow-x: auto; padding: 10px;">
+                        <thead>
+                            <tr>
+                                <th style="font-size: larger; font-weight: bold;">ID</th>
+                                <th style="font-size: larger; font-weight: bold;">Author</th>
+                                <th style="font-size: larger; font-weight: bold;">Tags</th>
+                                <th style="font-size: larger; font-weight: bold;">Quotes</th>
+                                <th style="font-size: larger; font-weight: bold;">Edit/Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var row in rows.Where(r => string.IsNullOrEmpty(searchText) || r.Contains(searchText)))
+                            {
+                                var rowData = row.Split();
+                                <tr>
+                                    @foreach (var x in rowData)
+                                    {
+                                        <td>
+                                            @if (x == "EditDelete")
+                                            {
+                                                <MudIconButton Icon="@Icons.Material.Filled.Edit" aria-label="edit" />
+                                                <MudIconButton Icon="@Icons.Material.Filled.Delete" aria-label="delete" />
+                                            }
+                                            else
+                                            {
+                                                <strong>@x</strong>
+                                            }
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </MudSimpleTable>
+                </MudCardContent>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    string[] rows = {
+        @"1 Krishna mailto:kpartner0@usatoday.com test EditDelete",
+        @"2 test2 mailto:test@usatoday.com test EditDelete",
+        @"3 test33 mailto:kpartner0@usatoday.com test EditDelete",
+        @"4 test45 mailto:test@usatoday.com test EditDelete",
+        @"5 test56 mailto:kpartner0@usatoday.com test EditDelete",
+    };
+
+    string searchText = "";
+}

@@ -1,0 +1,89 @@
+﻿@page "/Add_author"
+
+<style>
+    .add-button {
+        border: 2px solid black;
+        / Black border / color: black !important;
+        / Black icon color / border-radius: 50%;
+        / Makes the button round / display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+        / Adjust margin as needed / margin-top: 10px;
+        padding: 0;
+        / Remove padding /
+    }
+
+    .outlined-black .mud-input-root {
+        border-color: black;
+        / Black border /
+    }
+
+</style>
+
+
+
+
+<MudContainer>
+    <MudGrid Justify="Justify.Center" AlignItems="AlignItems.Center" Class="mt-10">
+        <MudItem xs="12" md="6">
+            <MudPaper Elevation="3">
+                <MudCardContent>
+
+                    <div class="mb-4" style="display: flex; align-items: center;">
+                        <MudText Typo="Typo.body1" style="margin-right: 10px;"><strong>Author</strong></MudText>
+                        <div style="flex-grow: 1;">
+                            <MudTextField @bind-Value="Author" Variant="Variant.Outlined" Style="width: 300px; border-width: 2px;" Class="outlined-black"></MudTextField>
+                        </div>
+                    </div>
+
+                    <div class="mb-4" style="display: flex; align-items: center;">
+                        <MudText Typo="Typo.body1" style="margin-right: 35px;"><strong>Tag</strong></MudText>
+                        <div style="display: flex; flex-grow: 1;">
+                            <MudTextField @bind-Value="Tag" Variant="Variant.Outlined" Style="width: 300px; border-width: 2px; "></MudTextField>
+                            <MudFab StartIcon="@Icons.Material.Filled.Add" Class="add-button" Size="Size.Small" />
+                        </div>
+                    </div>
+
+                    <div class="mb-4" style="display: flex; align-items: center;">
+                        <MudText Typo="Typo.body1" style="margin-right: 10px;"><strong>Quotes</strong></MudText>
+                        <div style="display: flex; flex-grow: 1;">
+                            <MudTextField @bind-Value="Quotes" Variant="Variant.Outlined" Style="border-width: 2px; flex-grow: 1;"></MudTextField>
+                            <MudFab StartIcon="@Icons.Material.Filled.Add" Class="add-button" Size="Size.Small" />
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <MudButton Variant="Variant.Filled">Add</MudButton>
+                    </div>
+                </MudCardContent>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private string Author { get; set; }
+    private string Tag { get; set; }
+    private string Quotes { get; set; }
+
+
+
+
+    private List<string> Tags { get; set; } = new List<string> { "" };
+
+    private void HandleClick(MouseEventArgs e)
+    {
+        Console.WriteLine("Adding a new tag...");
+        Tags.Add(""); // Add an empty tag
+    }
+
+
+
+
+
+    private void AddNewSymbolQuote()
+    {
+        // Add logic to add a new symbol quotes text field
+    }
+}
